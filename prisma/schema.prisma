@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  fullName  String
+  password  String?  // Thêm trường mật khẩu
+  role      String   @default("STUDENT") 
+  khoi      String?  
+  lop       String?  
+  createdAt DateTime @default(now())
+}
+
+// Bảng Ngân hàng Đề kiểm tra
+model Exam {
+  id          Int      @id @default(autoincrement())
+  tenDe       String   // Tên đề (VD: Kiểm tra 15p - Cơ sở dữ liệu Quan hệ)
+  khoi        String   // Dành cho khối (VD: "10", "11", "12")
+  thoiGian    Int      // Thời gian làm bài tính bằng phút (VD: 15, 45)
+  soCau       Int      // Tổng số câu hỏi
+  trangThai   String   @default("Chưa mở") // Các trạng thái: "Đang mở", "Đã đóng", "Chưa mở"
+  createdAt   DateTime @default(now())
+  questions   Question[] // MỚI THÊM: Một đề thi chứa nhiều câu hỏi
+}
+
+// Bảng Câu hỏi
+model Question {
+  id            Int      @id @default(autoincrement())
+  khoi          String   @default("12")
+  type          String   @default("MULTIPLE_CHOICE") // MỚI THÊM: "MULTIPLE_CHOICE" hoặc "TRUE_FALSE"
+  content       String   
+  optionA       String
+  optionB       String
+  optionC       String
+  optionD       String
+  correctAnswer String   // Lưu "A/B/C/D" hoặc chuỗi "D,S,D,S"
+  difficulty    Int      
+  
+  examId        Int      
+  exam          Exam     @relation(fields: [examId], references: [id]) 
+}

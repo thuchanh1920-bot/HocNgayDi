@@ -1,0 +1,9 @@
+{
+  "/api/auth/dang-nhap/route": "app/api/auth/dang-nhap/route.js",
+  "/api/de-kiem-tra/route": "app/api/de-kiem-tra/route.js",
+  "/page": "app/page.js",
+  "/hoc-sinh/de-kiem-tra/page": "app/hoc-sinh/de-kiem-tra/page.js",
+  "/hoc-sinh/tong-quan/page": "app/hoc-sinh/tong-quan/page.js",
+  "/dang-nhap/page": "app/dang-nhap/page.js",
+  "/kho-bai-giang/page": "app/kho-bai-giang/page.js"
+}
