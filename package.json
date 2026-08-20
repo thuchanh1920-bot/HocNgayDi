@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npx prisma generate && next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -16,6 +16,7 @@
     "mammoth": "^1.12.1",
     "next": "^15.0.0",
     "pg": "^8.23.0",
+    "prisma": "^7.9.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
